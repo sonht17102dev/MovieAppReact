@@ -4,6 +4,7 @@ const MovieDetail = (props) => {
   const [movieDetail, setMovieDetail] = useState({});
   const [isError, setIsError] = useState(false);
   // console.log(props.data);
+  //Hàm call Api và xử lý error khi không có dữ liệu trả về
   const getDatas = useCallback(() => {
     axios
       .get(
@@ -39,9 +40,11 @@ const MovieDetail = (props) => {
       });
   }, [props]);
 
+  //
   useEffect(() => {
     getDatas();
   }, [getDatas]);
+
   return (
     <div className="container">
       <div className="row">

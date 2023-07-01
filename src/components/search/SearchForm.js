@@ -35,7 +35,7 @@ const SearchForm = (props) => {
             <input
               type="text"
               className="form-control inputForm"
-              placeholder="Enter your keyword"
+              placeholder="Enter your keyword. EX: batman, spiderman, john wick..."
               value={searchValue}
               onChange={searchChangeHandler}
               onBlur={searchBlurHandler}

@@ -7,20 +7,24 @@ const MovieList = (props) => {
   const [isLoading] = useState(false);
   const [isShowMovie, setIsShowMovie] = useState(false);
   const [movieDetail, setMovieDetail] = useState(null);
+  const [movieDetailId, setMovieDetailId] = useState(0);
   const listMovies = useHttp(props.url);
   // console.log(listMovies);
 
+  // Hàm xử lý show/hide movieDetail
   const showDetailMovie = (event) => {
     setIsShowMovie(true);
-    // console.log(event.target.id);
     const movieDetail = listMovies.find(
       (movie) => movie.id === Number(event.target.id)
     );
-    // console.log(movieDetail);
+    setMovieDetailId(movieDetail.id);
+    if (Number(event.target.id) === movieDetailId) {
+      setIsShowMovie(false);
+    } else {
+      setMovieDetailId(Number(event.target.id));
+      setIsShowMovie(true);
+    }
     setMovieDetail(movieDetail);
-  };
-  const hideDetailMovie = () => {
-    setIsShowMovie(false);
   };
   return (
     <section className="listContainer bg-dark pt-4">
@@ -30,7 +34,7 @@ const MovieList = (props) => {
         <h3 className="text-light">{props.type}</h3>
         <div className="typeMovie-image">
           {listMovies.length === 0 ? (
-            <div class="d-flex justify-content-center text-center">
+            <div className="d-flex justify-content-center text-center">
               <div
                 id="loading-icon"
                 style={{ display: !isLoading ? "block" : "none" }}
@@ -49,7 +53,7 @@ const MovieList = (props) => {
                   alt={movie.name}
                   id={movie.id}
                   key={movie.id}
-                  onClick={!isShowMovie ? showDetailMovie : hideDetailMovie}
+                  onClick={showDetailMovie}
                 />
               );
             })
