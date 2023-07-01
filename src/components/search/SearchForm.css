@@ -1,0 +1,10 @@
+.formSearch {
+  padding-top: 160px;
+  width: 50%;
+}
+.inputForm {
+  height: 50px;
+}
+.errorMessage {
+  height: 50px;
+}

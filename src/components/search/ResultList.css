@@ -1,0 +1,11 @@
+.result img {
+  transition: all 0.5s;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  cursor: pointer;
+  width: 25%;
+}
+
+.result img:hover {
+  transform: scale(1.1);
+}
